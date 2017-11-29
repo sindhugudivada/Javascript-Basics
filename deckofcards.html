@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Deck {
+            constructor() {
+                this.number = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'];
+                this.suits = ['hearts', 'diamonds', 'clubs', 'spades'];
+                this.deck = [];
+            }
+
+            getdeck() {
+                for (let i = 0; i < this.number.length; i++) {
+                    for (let j = 0; j < this.suits.length; j++) {
+                        var card = {
+                            'number': this.number[i],
+                            'suit': this.suits[j]
+                        };
+                        this.deck.push(card);
+                    }
+                }
+                return this.deck;
+            }
+
+            shuffle(array) {
+                var array=this.deck
+                var m = array.length,t, i;
+
+                // While there remain elements to shuffle…
+                while (m) {
+
+                    // Pick a remaining element…
+                    i = Math.floor(Math.random() * m--);
+
+                    // And swap it with the current element.
+                    t = array[m];
+                    array[m] = array[i];
+                    array[i] = t;
+                }
+
+                return array;
+            }
+            deal(){
+                let card=this.deck.pop()
+                console.log(card);
+                return card;
+                
+            }
+            reset(){
+                this.deck=[];
+                this.getdeck();
+            }
+        }
+        class Player{
+            constructor(name){
+                this.name=name;
+                this.hand1 = [];
+            }
+
+            hand(deck) {
+                var hand2=this.hand1.push(deck.deal());
+                console.log(hand2)
+                return this;
+            }
+            
+            discard(){
+                let card1=this.hand1.pop()
+                console.log(card1)
+                return card1
+            }
+
+            
+        }
+
+    const deck1 = new Deck();
+    deck1.getdeck(); 
+    console.log(deck1.deck) ; 
+    deck1.shuffle();
+    deck1.deal();
+    console.log(deck1.deck);
+    deck1.reset();
+    console.log(deck1.deck);
+    const player1 = new Player("sindhu");
+    player1.hand(deck1);
+    player1.discard();
+
+
+
+  
+    </script>
+
+</body>
+
+</html>

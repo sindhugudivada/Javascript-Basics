@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function Ninja(name) {
+            this.name = name;
+            this.health = 100;
+            var speed = 3;
+            var strength = 3;
+    this.showStars = function () {
+        console.log("My strength is" + strength + "and speed is" + speed + "health" + this.health)
+        return this
+    }
+    this.kick = function(ninja) {
+		const damage = strength * 5;
+		ninja.health -= damage;
+		console.log(ninja.name + " was kicked by " + this.name + " and lost " + damage + " Health!");
+		return this;
+		}
+
+    }
+    Ninja.prototype.punch = function (ninja) {
+            ninja.health -= 5;
+			console.log(ninja.name + " was punched by " + this.name + " and lost 5 Health!");
+            return this;
+    }
+    const blueNinja = new Ninja("Goemon");
+    const redNinja = new Ninja("Bill Gates");
+    redNinja.punch(blueNinja);
+    blueNinja.kick(redNinja);
+
+
+    </script>
+    
+</body>
+</html>
